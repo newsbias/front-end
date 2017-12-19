@@ -83,7 +83,7 @@ class Site extends React.Component {
     const d = _.map(articles, (article) => {
       const t = article.title || '';
       const a = article.description || '';
-      return (sentiment(t).score + sentiment(a).score) / 2;
+      return (sentiment(t).score + sentiment(a).score) / 10; // 2 for average, 5 to normalize
     });
     const overall = _.mean(d) >= 0 ? 'positive' : 'negative';
     const data = {
