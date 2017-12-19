@@ -1,10 +1,10 @@
 import React from 'react';
-import './styles/menu.scss';
+import './styles/header.scss';
 
-const Menu = () => (
+const Header = () => (
   <header>
     <h1>newsbias</h1>
   </header>
 );
 
-export default Menu;
+export default Header;

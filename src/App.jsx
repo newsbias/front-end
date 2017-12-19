@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import Reducer from './redux/reducer';
-import Menu from './components/Menu';
+import Header from './components/Header';
 import Search from './components/Search';
 import Sites from './components/Sites';
 import Footer from './components/Footer';
@@ -20,7 +20,7 @@ class App extends React.Component {
     return (
       <Provider store={this.store}>
         <div>
-          <Menu />
+          <Header />
           <Search />
           <Sites />
           <Footer />
