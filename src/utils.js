@@ -18,7 +18,7 @@ export const DATASET_CONFIG = {
   pointHoverRadius: 5,
   pointRadius: 2,
   pointHitRadius: 10,
-  backgroundColor: '#64DD17',
-  borderColor: '#64DD17'
+  backgroundColor: '#2196F3',
+  borderColor: '#2196F3'
 };
 

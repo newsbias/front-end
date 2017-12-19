@@ -16,9 +16,9 @@ class Site extends React.Component {
     this.state = {
       id: props.id,
       query: null,
+      articles: [],
       overall: null,
       data: null,
-      page: 1,
       error: false
     };
     this.getData = this.getData.bind(this);
@@ -32,9 +32,8 @@ class Site extends React.Component {
    */
   componentWillReceiveProps(nextProps) {
     if (this.props.query !== nextProps.query) {
+      this.resetState();
       this.state.query = nextProps.query;
-      this.state.error = false;
-      this.state.overall = null;
       this.getData();
     }
   }
@@ -44,21 +43,42 @@ class Site extends React.Component {
    * make get request to newsapi.org
    */
   getData() {
+    const page = Math.ceil(this.state.articles.length / 20) + 1;
     if (!_.isEmpty(this.state.query)) {
-      const query = `?apiKey=${API_KEY}&sources=${this.state.id}&q=${this.state.query}&page=${this.state.page}`;
+      const query = `?apiKey=${API_KEY}&sources=${this.state.id}&q=${this.state.query}&page=${page}`;
       axios.get(URL + query)
-        .then(resp => this.parseData(resp.data))
-        .catch(() => this.setState({ data: null, error: true }));
+        .then((resp) => {
+          console.log(this.state.id, resp);
+          this.setState({ articles: this.state.articles.concat(resp.data.articles) });
+          this.parseData();
+        })
+        .catch((error) => {
+          console.log(this.state.id, error);
+          this.resetState();
+          this.setState({ error: true });
+        });
     }
   }
 
 
   /**
-   * parse data for chart.js
-   * @param { object } resp
+   * reset state
    */
-  parseData(resp) {
-    const articles = _.sortBy(resp.articles, 'publishedAt');
+  resetState() {
+    this.setState({
+      articles: [],
+      overall: null,
+      data: null,
+      error: false
+    });
+  }
+
+
+  /**
+   * parse data for chart.js
+   */
+  parseData() {
+    const articles = _.sortBy(this.state.articles, 'publishedAt');
     const labels = _.map(articles, article => (article.publishedAt.substring(0, article.publishedAt.indexOf('T'))));
     const d = _.map(articles, (article) => {
       const t = article.title || '';
@@ -75,17 +95,25 @@ class Site extends React.Component {
 
 
   /**
+   * load more data
+   */
+  loadMore() {
+    const len = this.state.articles.length;
+    if (len % 20 === 0) {
+      this.getData();
+    }
+  }
+
+  /**
    * render component
    */
   render() {
     return (
-      <div className="site">
-        <h2>{this.state.id.replace(/-/g, ' ')}</h2>
+      <div className="site" onClick={() => this.loadMore()}>
+        <h2 className={`${this.state.overall}`}>{this.state.id.replace(/-/g, ' ')}</h2>
 
-        { this.state.overall
-          ? <div>{this.state.overall} sentiment in general
-              <span className="result-count">({this.state.data.datasets[0].data.length} results)</span>
-            </div>
+        { !_.isEmpty(this.state.articles)
+          ? <span className="result-count">{this.state.articles.length} results</span>
           : null
         }
         { this.state.data
