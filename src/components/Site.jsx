@@ -6,10 +6,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Line } from 'react-chartjs-2';
 import sentiment from 'sentiment';
+import { API_KEY, URL, GRAPH_CONFIG, DATASET_CONFIG } from '../utils';
 import './styles/site.scss';
-
-
-const API_KEY = 'a7dd13e58ca742a2a6b0a54817dae216';
 
 
 class Site extends React.Component {
@@ -47,29 +45,11 @@ class Site extends React.Component {
    */
   getData() {
     if (!_.isEmpty(this.state.query)) {
-      const url = 'https://newsapi.org/v2/everything';
       const query = `?apiKey=${API_KEY}&sources=${this.state.id}&q=${this.state.query}&page=${this.state.page}`;
-      axios.get(url + query)
+      axios.get(URL + query)
         .then(resp => this.parseData(resp.data))
         .catch(() => this.setState({ data: null, error: true }));
     }
-  }
-
-
-  /**
-   * @returns { object } Line config
-   */
-  getConfig() {
-    return {
-      legend: {
-        display: false
-      },
-      tooltips: {
-        callbacks: {
-          label: () => null
-        }
-      }
-    };
   }
 
 
@@ -78,31 +58,19 @@ class Site extends React.Component {
    * @param { object } resp
    */
   parseData(resp) {
-    const labels = _.map(resp.articles, article => (article.publishedAt.substring(0, article.publishedAt.indexOf('T'))));
-    const data = _.map(resp.articles, article => (
-      (sentiment(article.title).score + sentiment(article.description).score)) / 2
-    );
-    const overall = _.mean(data) >= 0 ? 'positive' : 'negative';
-    const d = {
-      labels,
-      datasets: [{
-        label: 'description',
-        fill: false,
-        lineTension: 0.1,
-        pointBorderColor: 'black',
-        pointBackgroundColor: 'black',
-        pointHoverRadius: 5,
-        pointRadius: 2,
-        pointHitRadius: 10,
-        backgroundColor: '#64DD17',
-        borderColor: '#64DD17',
-        data
-      }]
-    };
-    this.setState({
-      overall,
-      data: d
+    const articles = _.sortBy(resp.articles, 'publishedAt');
+    const labels = _.map(articles, article => (article.publishedAt.substring(0, article.publishedAt.indexOf('T'))));
+    const d = _.map(articles, (article) => {
+      const t = article.title || '';
+      const a = article.description || '';
+      return (sentiment(t).score + sentiment(a).score) / 2;
     });
+    const overall = _.mean(d) >= 0 ? 'positive' : 'negative';
+    const data = {
+      labels,
+      datasets: [{ ...DATASET_CONFIG, data: d }]
+    };
+    this.setState({ overall, data });
   }
 
 
@@ -110,17 +78,18 @@ class Site extends React.Component {
    * render component
    */
   render() {
-    const config = this.getConfig();
     return (
       <div className="site">
         <h2>{this.state.id.replace(/-/g, ' ')}</h2>
 
         { this.state.overall
-          ? <p>{this.state.overall} sentiment in general</p>
+          ? <div>{this.state.overall} sentiment in general
+              <span className="result-count">({this.state.data.datasets[0].data.length} results)</span>
+            </div>
           : null
         }
         { this.state.data
-          ? <div className="site-content"><Line data={this.state.data} options={config} /></div>
+          ? <div className="site-content"><Line data={this.state.data} options={GRAPH_CONFIG} /></div>
           : null
         }
         { this.state.error
