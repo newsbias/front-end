@@ -1,15 +1,5 @@
 export const API_KEY = 'a7dd13e58ca742a2a6b0a54817dae216';
 export const URL = 'https://newsapi.org/v2/everything';
-export const GRAPH_CONFIG = {
-  legend: {
-    display: false
-  },
-  tooltips: {
-    callbacks: {
-      label: () => null
-    }
-  }
-};
 export const DATASET_CONFIG = {
   fill: false,
   lineTension: 0.1,
@@ -21,4 +11,3 @@ export const DATASET_CONFIG = {
   backgroundColor: '#2196F3',
   borderColor: '#2196F3'
 };
-

@@ -73,6 +73,28 @@ class Site extends React.Component {
     });
   }
 
+  /**
+   * Sets up the graph configuration for the LINE prop
+   */
+  graph_config(data) {
+  	return {
+  		legend: {
+  		  display: true
+  		},
+  		tooltips: {
+  		  callbacks: {
+  			label: () => null
+  		  }
+  		},
+  		onClick() {
+  			window.open(data.url);
+  		},
+  		onHover() {
+  			return data.info;
+  		}
+  	};
+  };
+
 
   /**
    * parse data for chart.js
@@ -83,7 +105,7 @@ class Site extends React.Component {
     const d = _.map(articles, (article) => {
       const t = article.title || '';
       const a = article.description || '';
-      return (sentiment(t).score + sentiment(a).score) / 10; // 2 for average, 5 to normalize
+      return {"score": (sentiment(t).score + sentiment(a).score) / 10, "info": t + a, "url": article.url}; // 2 for average, 5 to normalize
     });
     const overall = _.mean(d) >= 0 ? 'positive' : 'negative';
     const data = {
@@ -117,7 +139,7 @@ class Site extends React.Component {
           : null
         }
         { this.state.data
-          ? <div className="site-content"><Line data={this.state.data} options={GRAPH_CONFIG} /></div>
+          ? <div className="site-content"><Line data={this.state.data.score} options={this.graph_config(this.state.data)} /></div>
           : null
         }
         { this.state.error
