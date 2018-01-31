@@ -16,6 +16,9 @@ const UglifyJsPluginConfig = new webpack.optimize.UglifyJsPlugin({
 });
 
 module.exports = merge(baseConfig, {
+  entry: [
+    './src/index.jsx'
+  ],
   output: {
     filename: 'index.js',
     path: path.join(__dirname, '../build')

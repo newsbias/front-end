@@ -1,5 +1,6 @@
 export const API_KEY = 'a7dd13e58ca742a2a6b0a54817dae216';
 export const URL = 'https://newsapi.org/v2/everything';
+
 export const GRAPH_CONFIG = {
   legend: {
     display: false
@@ -10,6 +11,7 @@ export const GRAPH_CONFIG = {
     }
   }
 };
+
 export const DATASET_CONFIG = {
   fill: false,
   lineTension: 0.1,
@@ -21,4 +23,6 @@ export const DATASET_CONFIG = {
   backgroundColor: '#2196F3',
   borderColor: '#2196F3'
 };
+
+export const SITE_NAME_CONFIG = (site) => site.replace(/-/g, ' ');
 

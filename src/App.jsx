@@ -5,10 +5,11 @@ import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import Reducer from './redux/reducer';
-import Header from './components/Header';
-import Search from './components/Search';
-import Sites from './components/Sites';
-import Footer from './components/Footer';
+import HeaderComponent from './components/Header';
+import SearchComponent from './components/Search';
+import SelectorComponent from './components/Selector';
+import SitesComponent from './components/Sites';
+import FooterComponent from './components/Footer';
 
 class App extends React.Component {
   constructor() {
@@ -20,10 +21,11 @@ class App extends React.Component {
     return (
       <Provider store={this.store}>
         <div>
-          <Header />
-          <Search />
-          <Sites />
-          <Footer />
+          <HeaderComponent />
+          <SearchComponent />
+          <SelectorComponent />
+          <SitesComponent />
+          <FooterComponent />
         </div>
       </Provider>
     );

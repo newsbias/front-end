@@ -1,0 +1,18 @@
+.selector {
+
+  white-space: nowrap;
+  overflow-x: scroll;
+
+  .selector-pair {
+    display: inline-block;
+    padding: 10px;
+  }
+
+  .selector-pair:not(:last-child) {
+    border-right: 1px solid #ddd;
+  }
+
+  input {
+    margin-right: 10px;
+  }
+}

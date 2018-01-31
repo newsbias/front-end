@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Line } from 'react-chartjs-2';
 import sentiment from 'sentiment';
-import { API_KEY, URL, GRAPH_CONFIG, DATASET_CONFIG } from '../utils';
+import { API_KEY, URL, GRAPH_CONFIG, DATASET_CONFIG, SITE_NAME_CONFIG } from '../utils';
 import './styles/site.scss';
 
 
@@ -109,8 +109,8 @@ class Site extends React.Component {
    */
   render() {
     return (
-      <div className="site" onClick={() => this.loadMore()}>
-        <h2 className={`${this.state.overall}`}>{this.state.id.replace(/-/g, ' ')}</h2>
+      <div className="site card" onClick={() => this.loadMore()}>
+        <h2 className={`${this.state.overall}`}>{SITE_NAME_CONFIG(this.state.id)}</h2>
 
         { !_.isEmpty(this.state.articles)
           ? <span className="result-count">{this.state.articles.length} results</span>

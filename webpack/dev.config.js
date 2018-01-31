@@ -14,7 +14,8 @@ module.exports = merge(baseConfig, {
     }
   },
   entry: [
-    'react-hot-loader/patch'
+    'react-hot-loader/patch',
+    './src/index.jsx'
   ],
   plugins: [
     new webpack.HotModuleReplacementPlugin(),

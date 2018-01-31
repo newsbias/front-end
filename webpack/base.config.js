@@ -14,9 +14,6 @@ const HTMLWebpackPluginConfig = new HTMLWebpackPlugin({
 });
 
 module.exports = {
-  entry: [
-    './src/index.jsx'
-  ],
   module: {
     loaders: [
       {

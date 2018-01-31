@@ -7,12 +7,14 @@ import './styles/sites.scss';
 
 const Sites = props => (
   <div className="site-list">{
-    _.map(props.sites, site => (<Site key={site} id={site} />))
+    _.map(props.sites, (enabled, site) => (
+      enabled ? <Site key={site} id={site} /> : null
+    ))
   }</div>
 );
 
 Sites.propTypes = {
-  sites: PropTypes.array.isRequired
+  sites: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
