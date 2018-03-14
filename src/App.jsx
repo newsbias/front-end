@@ -7,9 +7,9 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import Reducer from './redux/reducer';
 import HeaderComponent from './components/Header';
 import SearchComponent from './components/Search';
-import SelectorComponent from './components/Selector';
-import SitesComponent from './components/Sites';
+import ResultsComponent from './components/Results';
 import FooterComponent from './components/Footer';
+import * as utils from './utils';
 
 class App extends React.Component {
   constructor() {
@@ -20,11 +20,10 @@ class App extends React.Component {
   render() {
     return (
       <Provider store={this.store}>
-        <div>
+        <div className="app">
           <HeaderComponent />
           <SearchComponent />
-          <SelectorComponent />
-          <SitesComponent />
+          <ResultsComponent />
           <FooterComponent />
         </div>
       </Provider>

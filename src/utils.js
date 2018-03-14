@@ -1,28 +1,36 @@
-export const API_KEY = 'a7dd13e58ca742a2a6b0a54817dae216';
-export const URL = 'https://newsapi.org/v2/everything';
+import $ from 'jquery';
 
-export const GRAPH_CONFIG = {
-  legend: {
-    display: false
-  },
-  tooltips: {
-    callbacks: {
-      label: () => null
+$(document).ready(function() {
+  expandCard();
+  clickArticle();
+});
+
+
+function expandCard() {
+  $('.cluster').click(function(e) {
+    // card already showing
+    const show = !$(this).hasClass('selected');
+    // reset all other cards
+    $('.card-expand').hide();
+    $('.card').addClass('span');
+    $('.card').removeClass('full-span');
+    $('.card').removeClass('selected')
+    // show this card
+    if (show) {
+      $(this).children('.card-expand').show();
+      $(this).toggleClass('full-span');
+      $(this).toggleClass('span');
+      $(this).toggleClass('selected');
     }
-  }
-};
+  });
+}
 
-export const DATASET_CONFIG = {
-  fill: false,
-  lineTension: 0.1,
-  pointBorderColor: 'black',
-  pointBackgroundColor: 'black',
-  pointHoverRadius: 5,
-  pointRadius: 2,
-  pointHitRadius: 10,
-  backgroundColor: '#2196F3',
-  borderColor: '#2196F3'
-};
 
-export const SITE_NAME_CONFIG = (site) => site.replace(/-/g, ' ');
+export function clickArticle() {
+  $('.article').click(function(e) {
+    e.stopPropagation();
+    var win = window.open(e.target.id, '_blank');
+    win.focus();
+  });
+}
 
