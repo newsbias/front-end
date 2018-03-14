@@ -7,6 +7,7 @@ import ClusterComponent from './Cluster';
 
 
 import fixture1 from '../fixtures/fixture1.json';
+import DonaldTrump from '../fixtures/DonaldTrump.json';
 
 
 
@@ -24,9 +25,9 @@ const Results = props => {
 
   return (
     <div>
-      <p className="result-count">constructed {fixture1.data.length} topic clusters</p>
+      <p className="result-count">constructed {DonaldTrump.data.length} topic clusters</p>
       <div className="grid">{
-        _.map(fixture1.data, (cluster, idx) => {
+        _.map(DonaldTrump.data, (cluster, idx) => {
           return (
             <ClusterComponent
               key={`cluster-${idx}`}

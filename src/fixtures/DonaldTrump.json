@@ -1,0 +1,103 @@
+{
+	"main_card": {
+		"title": "Donald Trump",
+		"summary": "Donald John Trump (born June 14, 1946) is the 45th and current President of the United States, in office since January 20, 2017. Before entering politics, he was a businessman and television personality.",
+		"image_url": "https://en.wikipedia.org/wiki/Donald_Trump#/media/File:Official_Portrait_of_President_Donald_Trump.jpg",
+		"articles": ["https://en.wikipedia.org/wiki/Donald_Trump"]
+	},
+	"data": [{
+			"title": "The Trump administration is in turmoil",
+			"summary": "The turmoil in the Trump administration is putting the president on shaky political ground.",
+			"image_url": "https://fm.cnbc.com/applications/cnbc.com/resources/img/editorial/2017/04/24/104421726-RTS13DDS.1910x1000.jpg?v=1493033750",
+			"articles": [{
+					"title": "White House in turmoil: a tumultuous 24 hours - even by Trump standards",
+					"url": "https://www.theguardian.com/us-news/2018/mar/01/donald-trump-white-house-trade-gun-control",
+					"source": "theguardian"
+				},
+				{
+					"title": "Trump officials do damage control after staff turmoil",
+					"url": "http://thehill.com/homenews/administration/373339-trump-officials-do-damage-control-after-staff-turmoil",
+					"source": "thehill"
+				},
+				{
+					"title": "very-turbulent-trump-and-white-house-consumed-with-turmoil-amid-abuse-allegations",
+					"url": "https://www.washingtonpost.com/politics/very-turbulent-trump-and-white-house-consumed-with-turmoil-amid-abuse-allegations/2018/02/09/aa377d12-0dd8-11e8-8890-372e2047c935_story.html?utm_term=.1e686eafb647",
+					"source": "washingtonpost"
+				}
+			]
+		},
+		{
+			"title": "Donald Trump agrees to meet with Kim Jung Un",
+			"summary": "Trump’s Biggest North Korea Mistake Is Coming",
+			"image_url": "https://cdn.cnn.com/cnnnext/dam/assets/170403091619-kim-jong-un-donald-trump-split-0403-large-169.jpg",
+			"articles": [{
+					"title": "Trump is walking into Kim Jong Un’s trap",
+					"url": "https://www.washingtonpost.com/news/theworldpost/wp/2018/03/13/trump-north-korea/?utm_term=.a8435f2f72d2",
+					"source": "washingtonpost"
+				},
+				{
+					"title": "Trump-North Korea meeting: US 'knows the risks', says spy chief",
+					"url": "http://www.bbc.com/news/world-us-canada-43366328",
+					"source": "bbc"
+				},
+				{
+					"title": "US starts to prep for North Korea summit even as Pyongyang remains silent",
+					"url": "https://www.cnn.com/2018/03/13/politics/trump-korea-summit-early-prep/index.html",
+					"source": "cnn"
+				},
+				{
+					"title": "Trump’s Biggest North Korea Mistake Is Coming",
+					"url": "https://www.politico.com/magazine/story/2017/08/29/north-korea-missile-trump-215551",
+					"source": "politico"
+				}
+			]
+		},
+		{
+			"title": "Stormy Daniels Files Lawsuit Against Donald Trump",
+			"summary": "The Wall Street Journal reported on January 12, 2018 that Donald Trump's personal lawyer, Michael Cohen, paid Stormy Daniels $130,000 in hush money in October 2016, shortly before the presidential election, to deny she had an affair with Trump in 2006. On March 6, 2018, Daniels filed a lawsuit against Donald Trump in California Superior Court, claiming, among other things, that the nondisclosure agreement never came into effect because Trump never signed it. The suit, which is a complaint for declaratory relief, seeks a judgment declaring that no agreement was formed and for costs of the suit and other relief the Court might deem proper.",
+			"image_url": "https://cdn.cnn.com/cnnnext/dam/assets/180112185625-stormy-daniels-trump-super-169.jpg",
+			"articles": [{
+					"title": "Stormy Daniels’s legal battle against Trump, explained",
+					"url": "https://www.vox.com/policy-and-politics/2018/3/13/17109656/stormy-daniels-donald-trump-lawsuit-affair-porn-adult-arbitration-michael-cohen-payoff",
+					"source": "vox"
+				},
+				{
+					"title": "Stormy Daniels Lawsuit Opens Door To Further Trouble for Trump",
+					"url": "https://www.nytimes.com/2018/03/08/us/politics/stormy-daniels-trump-legal-case.html",
+					"source": "nytimes"
+				},
+				{
+					"title": "Porn star Stormy Daniels' lawsuit against Donald Trump",
+					"url": "https://www.cnn.com/2018/03/06/politics/stormy-daniels-lawsuit/index.html",
+					"source": "cnn"
+				}
+			]
+		},
+		{
+			"title": "Trump budget passes in congress",
+			"summary": "America First: A Budget Blueprint to Make America Great Again, was the first budget proposed by newly-elected President Donald Trump, submitted to the 115th Congress on March 16, 2017. If passed, the $4.1 trillion budget will fund government operations for fiscal year 2018, which runs from October 1, 2017 to September 30, 2018",
+			"image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/2018_US_federal_budget_cover.png/255px-2018_US_federal_budget_cover.png",
+			"articles": [{
+					"title": "What Trump cut in his agency budgets",
+					"url": "https://www.washingtonpost.com/graphics/politics/trump-presidential-budget-2018-proposal/",
+					"source": "washingtonpost"
+				},
+				{
+					"title": "Winners and losers in President Trump's first budget",
+					"url": "https://www.usatoday.com/story/news/politics/onpolitics/2017/05/23/winners-and-losers-president-trump-first-budget/102062398/",
+					"source": "usatoday"
+				},
+				{
+					"title": "Read President Trump's Budget Blueprint",
+					"url": "https://www.npr.org/2017/03/16/520379061/read-president-trumps-budget-blueprint",
+					"source": "npr"
+				},
+				{
+					"title": "Donald Trump’s “America First” budget would make deep cuts to domestic programmes",
+					"url": "https://www.economist.com/blogs/graphicdetail/2017/03/daily-chart-11",
+					"source": "economist"
+				}
+			]
+		}
+	]
+}
