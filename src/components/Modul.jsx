@@ -15,10 +15,10 @@ const Modul = props => {
   $('body').css('overflow', 'hidden');
 
   return (
-    <div className="modul">
-      <button className="modul-button" onClick={() => props.hide()}>X</button>
+    <div className="modul" onClick={() => props.hide()}>
+      <button className="modul-button">X</button>
 
-      <div className="modul-content">
+      <div className="modul-content" onClick={(e) => e.stopPropagation()}>
         <h3>{props.title}</h3>
         {/* <img className="modul-image" src={props.image_url} alt="image not found" /> */}
         {/* <p className="modul-summary">{props.summary}</p> */}
