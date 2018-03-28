@@ -10,8 +10,6 @@ body {
 .app {
   padding: 15px;
 }
-.pad { padding: 15px; }
-.margin { margin: 15px; }
 
 
 // links
@@ -21,6 +19,19 @@ a {
 }
 a:hover {
   color: #64DD17;
+}
+a:visited {
+  color: #9C27B0;
+}
+
+// titles
+h2 {
+  padding: 20px 20px 10px;
+}
+.subtitle {
+  color: gray;
+  padding: 0 20px;
+  font-style: italic;
 }
 
 
@@ -32,58 +43,23 @@ a:hover {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
   overflow-x: scroll;
-  p { color: gray; }
+  margin: 20px;
 }
-.card:hover {
-  cursor: pointer;
-  box-shadow: 0 5px 7px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-}
+
 .card-title {
-  border-bottom: 1px dotted #eee;
+  color: gray;
+  padding: 20px;
 }
-.card-expand {
-  display: none;
-  width: 100%;
-  white-space: nowrap;
-  overflow-x: scroll;
-}
-.selected {
-  border: 3px solid #aaa;
+
+.card-summary {
+  padding: 20px;
 }
 
 
 // grid items
 .grid {
   display: grid;
-  grid-template-columns: 25% 25% 25% 25%;
-}
-.span { grid-column: span 4; }
-.full-span { grid-column: span 4; }
-
-
-// results
-.spacer {
-  visibility: hidden;
-  padding: 10px 15px 15px;
-}
-.result-count, .article-count {
-  font-style: italic;
-  color: gray;
-}
-.result-count {
-  font-size: 0.9em;
-  padding-left: 15px;
-}
-.article-count {
-  font-size: 0.8em;
-  position: absolute;
-  bottom: 15px;
-  right: 15px;
+  grid-template-columns: 33% 34% 33%;
 }
 
-
-// media queries
-@media screen and (min-width: 720px) {
-  .span { grid-column: span 2; }
-}
 

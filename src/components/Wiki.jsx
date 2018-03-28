@@ -3,13 +3,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import axios from 'axios';
-import ClusterComponent from './Cluster';
+import { wikiUrl } from '../utils';
 import LoadingComponent from './Loading';
-import { resultsUrl } from '../utils';
+import './styles/wiki.scss';
 
-import DonaldTrump from '../fixtures/DonaldTrump.json';
+import fixture from '../fixtures/wikiDonaldTrump.json';
 
-class Results extends React.Component {
+
+
+class Wiki extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -25,7 +27,7 @@ class Results extends React.Component {
   }
 
   componentDidMount() {
-    // axios.get(resultsUrl + this.state.query)
+    // axios.get(wikiUrl + this.state.query)
     //   .then((resp) => {
     //     console.log(resp);
     //     this.setState({ data: resp });
@@ -41,44 +43,38 @@ class Results extends React.Component {
       return null;
     }
 
-    const header = <h2>search results</h2>;
-    let subtitle = null;
+    const header = <h2>background information</h2>;
     let content = null;
 
     // loading screen
     if (_.isEmpty(this.state.data)) {
       content = <LoadingComponent />;
     }
-
+    // no data
+    else if (!this.state.data.found) {
+      content = <div className="error">no background data found :(</div>
+    }
+    // valid data
     else {
-      subtitle = <p className="subtitle">constructed {this.state.data.data.length} topic clusters</p>;
       content =
-        <div className="grid">{
-          _.map(DonaldTrump.data, (cluster, idx) => {
-            return (
-              <ClusterComponent
-                key={`cluster-${idx}`}
-                title={cluster.title}
-                image_url={cluster.image_url}
-                summary={cluster.summary}
-                articles={cluster.articles}
-              />
-            )
-          })
-        }</div>
+        <div className="card">
+          <h3 className="card-title">{this.state.data.title}</h3>
+          <img src={this.state.data.image} className="wiki-card-image" alt="no image found" />
+          <p className="card-summary">{this.state.data.summary}</p>
+        </div>;
     }
 
+    // resp data
     return (
       <div>
         {header}
-        {subtitle}
         {content}
       </div>
     );
   }
 };
 
-Results.propTypes = {
+Wiki.propTypes = {
   query: PropTypes.string
 };
 
@@ -86,4 +82,4 @@ const mapStateToProps = state => ({
   query: state.query
 });
 
-export default connect(mapStateToProps, null)(Results);
+export default connect(mapStateToProps, null)(Wiki);

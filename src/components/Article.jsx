@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import './styles/article.scss';
 
 const Article = props => (
-  <div className="pad card article" id={props.url}>
+  <a href={props.url} className="article" target="_blank">
     <span className="source" id={props.url}>[ {props.source} ]</span> {props.title}
-  </div>
+  </a>
 );
 
 Article.propTypes = {
