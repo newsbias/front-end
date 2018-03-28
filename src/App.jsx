@@ -11,6 +11,7 @@ import WikiComponent from './components/Wiki';
 import ResultsComponent from './components/Results';
 import ModulComponent from './components/Modul';
 import FooterComponent from './components/Footer';
+import './style.scss';
 
 class App extends React.Component {
   constructor() {
