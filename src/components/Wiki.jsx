@@ -7,8 +7,6 @@ import { wikiUrl } from '../utils';
 import LoadingComponent from './Loading';
 import './styles/wiki.scss';
 
-// import fixture from '../fixtures/wikiDonaldTrump.json';
-
 
 class Wiki extends React.Component {
   constructor(props) {
@@ -35,7 +33,6 @@ class Wiki extends React.Component {
   }
 
   render() {
-    console.log(this.state);
     if (_.isEmpty(this.state.query)) {
       return null;
     }

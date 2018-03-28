@@ -7,7 +7,6 @@ import ClusterComponent from './Cluster';
 import LoadingComponent from './Loading';
 import { resultsUrl } from '../utils';
 
-// import DonaldTrump from '../fixtures/DonaldTrump.json';
 
 class Results extends React.Component {
   constructor(props) {

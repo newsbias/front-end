@@ -5,7 +5,7 @@ export const search = query => ({
   data: query
 });
 
-export const modul = modul => ({
+export const modul = data => ({
   type: MODUL,
-  data: modul
+  data
 });
