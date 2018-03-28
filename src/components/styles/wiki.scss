@@ -1,0 +1,12 @@
+.wiki-card-image {
+  max-width: 100%;
+}
+
+@media screen and (min-width: 720px) {
+  .wiki-card-image {
+    max-width: 50%;
+    max-height: 40vh;
+    float: right;
+    padding: 20px;
+  }
+}

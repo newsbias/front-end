@@ -1,28 +1,9 @@
-export const API_KEY = 'a7dd13e58ca742a2a6b0a54817dae216';
-export const URL = 'https://newsapi.org/v2/everything';
+export const wikiUrl = 'https://secure-shelf-84926.herokuapp.com/wikipedia?q=';
+export const resultsUrl = 'https://secure-shelf-84926.herokuapp.com/search?q=';
 
-export const GRAPH_CONFIG = {
-  legend: {
-    display: false
-  },
-  tooltips: {
-    callbacks: {
-      label: () => null
-    }
+export function filterQuery(q) {
+  if (_.isEmpty(q)) {
+    return null;
   }
-};
-
-export const DATASET_CONFIG = {
-  fill: false,
-  lineTension: 0.1,
-  pointBorderColor: 'black',
-  pointBackgroundColor: 'black',
-  pointHoverRadius: 5,
-  pointRadius: 2,
-  pointHitRadius: 10,
-  backgroundColor: '#2196F3',
-  borderColor: '#2196F3'
-};
-
-export const SITE_NAME_CONFIG = (site) => site.replace(/-/g, ' ');
-
+  return q.toLowerCase().replace(/ /g, "+");
+}
