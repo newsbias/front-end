@@ -7,8 +7,7 @@ import { wikiUrl } from '../utils';
 import LoadingComponent from './Loading';
 import './styles/wiki.scss';
 
-import fixture from '../fixtures/wikiDonaldTrump.json';
-
+// import fixture from '../fixtures/wikiDonaldTrump.json';
 
 
 class Wiki extends React.Component {
@@ -22,23 +21,21 @@ class Wiki extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     if (!_.isEmpty(nextProps.query) && nextProps.query !== this.state.query) {
-      this.setState({ query: nextProps.query });
+      this.setState({ ...nextProps, data: null });
+      axios.get(wikiUrl + nextProps.query)
+        .then((resp) => {
+          console.log(resp);
+          this.setState({ data: resp });
+        })
+        .catch((err) => {
+          console.log(err);
+          this.setState({ data: err });
+        });
     }
   }
 
-  componentDidMount() {
-    // axios.get(wikiUrl + this.state.query)
-    //   .then((resp) => {
-    //     console.log(resp);
-    //     this.setState({ data: resp });
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //     this.setState({ data: err });
-    //   });
-  }
-
   render() {
+    console.log(this.state);
     if (_.isEmpty(this.state.query)) {
       return null;
     }
@@ -52,7 +49,7 @@ class Wiki extends React.Component {
     }
     // no data
     else if (!this.state.data.found) {
-      content = <div className="error">no background data found :(</div>
+      content = <div className="error">no background data found :(</div>;
     }
     // valid data
     else {

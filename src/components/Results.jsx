@@ -7,7 +7,7 @@ import ClusterComponent from './Cluster';
 import LoadingComponent from './Loading';
 import { resultsUrl } from '../utils';
 
-import DonaldTrump from '../fixtures/DonaldTrump.json';
+// import DonaldTrump from '../fixtures/DonaldTrump.json';
 
 class Results extends React.Component {
   constructor(props) {
@@ -20,20 +20,17 @@ class Results extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     if (!_.isEmpty(nextProps.query) && nextProps.query !== this.state.query) {
-      this.setState({ query: nextProps.query });
+      this.setState({ ...nextProps, data: null });
+      axios.get(resultsUrl + nextProps.query)
+        .then((resp) => {
+          console.log(resp);
+          this.setState({ data: resp });
+        })
+        .catch((err) => {
+          console.log(err);
+          this.setState({ data: err });
+        });
     }
-  }
-
-  componentDidMount() {
-    // axios.get(resultsUrl + this.state.query)
-    //   .then((resp) => {
-    //     console.log(resp);
-    //     this.setState({ data: resp });
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //     this.setState({ data: err });
-    //   });
   }
 
   render() {
@@ -48,6 +45,10 @@ class Results extends React.Component {
     // loading screen
     if (_.isEmpty(this.state.data)) {
       content = <LoadingComponent />;
+    }
+    // error in data
+    else if (_.isEmpty(this.state.data.data)) {
+      content = <div className="error">error fetching data :(</div>;
     }
 
     else {

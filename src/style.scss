@@ -62,4 +62,13 @@ h2 {
   grid-template-columns: 33% 34% 33%;
 }
 
+//errors
+.error {
+  display: inline-block;
+  padding: 20px;
+  margin: 0 20px;
+  background-color: rgb(255, 170, 170);
+  border-radius: 2px;
+}
+
 
