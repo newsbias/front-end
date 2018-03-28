@@ -70,7 +70,7 @@ class Results extends React.Component {
                 key={`cluster-${idx}`}
                 title={cluster.keywords}
                 // image_url={cluster.image_url}
-                // summary={cluster.text}
+                summary={cluster.summary}
                 articles={cluster.articles}
               />
             )

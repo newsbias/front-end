@@ -15,7 +15,7 @@ const Cluster = props => (
 
 Cluster.propTypes = {
   title: PropTypes.string.isRequired,
-  // summary: PropTypes.string,
+  summary: PropTypes.string.isRequired,
   articles: PropTypes.array.isRequired,
   // image_url: PropTypes.string,
   showModul: PropTypes.func.isRequired

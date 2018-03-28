@@ -60,8 +60,11 @@ class Wiki extends React.Component {
       content =
         <div className="card">
           <h3 className="card-title">{this.state.data.title}</h3>
-          <img src={this.state.data.image} className="wiki-card-image" alt="no image found" />
-          <p className="card-summary">{this.state.data.summary}</p>
+          { !_.isEmpty(this.state.data.image)
+            ? <img src={this.state.data.image} className="wiki-card-image" alt="no image found" /> 
+            : null
+          }
+          <p className="span card-summary">{this.state.data.summary}</p>
         </div>;
     }
 
