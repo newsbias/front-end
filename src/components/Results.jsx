@@ -13,26 +13,32 @@ class Results extends React.Component {
     super(props);
     this.state = {
       query: props.query,
-      data: null
+      data: null,
+      err: null
     }
   }
 
   componentWillReceiveProps(nextProps) {
     if (!_.isEmpty(nextProps.query) && nextProps.query !== this.state.query) {
-      this.setState({ ...nextProps, data: null });
-      axios.get(resultsUrl + nextProps.query)
+      this.setState({ ...nextProps, data: null, err: null });
+      console.log(nextProps.query);
+      axios.get(resultsUrl, {
+        params: {
+          q: nextProps.query
+        }
+      })
         .then((resp) => {
-          console.log(resp);
-          this.setState({ data: resp });
+          this.setState({ data: resp.data });
         })
         .catch((err) => {
           console.log(err);
-          this.setState({ data: err });
+          this.setState({ err });
         });
     }
   }
 
   render() {
+    console.log(this.state);
     if (_.isEmpty(this.state.query)) {
       return null;
     }
@@ -42,25 +48,29 @@ class Results extends React.Component {
     let content = null;
 
     // loading screen
-    if (_.isEmpty(this.state.data)) {
+    if (!_.isEmpty(this.state.err)) {
+      content = <div className="error">error fetching results</div>;
+    }
+    // loading
+    else if (this.state.data === null) {
       content = <LoadingComponent />;
     }
     // error in data
-    else if (_.isEmpty(this.state.data.data)) {
-      content = <div className="error">error fetching data :(</div>;
+    else if (_.isEmpty(this.state.data)) {
+      content = <div className="error">no results found</div>;
     }
 
     else {
-      subtitle = <p className="subtitle">constructed {this.state.data.data.length} topic clusters</p>;
+      subtitle = <p className="subtitle">constructed {this.state.data.length} topic clusters</p>;
       content =
         <div className="grid">{
-          _.map(DonaldTrump.data, (cluster, idx) => {
+          _.map(this.state.data, (cluster, idx) => {
             return (
               <ClusterComponent
                 key={`cluster-${idx}`}
-                title={cluster.title}
-                image_url={cluster.image_url}
-                summary={cluster.summary}
+                title={cluster.keywords}
+                // image_url={cluster.image_url}
+                // summary={cluster.text}
                 articles={cluster.articles}
               />
             )

@@ -7,7 +7,7 @@ import './styles/cluster.scss';
 const Cluster = props => (
   <div className="card cluster" onClick={() => props.showModul({ ...props, visible: true })} >
     <h3 className="card-title">{props.title}</h3>
-    <img className="cluster-card-image" src={props.image_url} alt="image not found" />
+    {/* <img className="cluster-card-image" src={props.image_url} alt="image not found" /> */}
     <p className="spacer"></p>
     <p className="article-count">produced from {props.articles.length} articles</p>
   </div>
@@ -15,9 +15,9 @@ const Cluster = props => (
 
 Cluster.propTypes = {
   title: PropTypes.string.isRequired,
-  summary: PropTypes.string.isRequired,
+  // summary: PropTypes.string,
   articles: PropTypes.array.isRequired,
-  image_url: PropTypes.string.isRequired,
+  // image_url: PropTypes.string,
   showModul: PropTypes.func.isRequired
 };
 

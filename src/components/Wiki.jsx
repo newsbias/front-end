@@ -13,21 +13,24 @@ class Wiki extends React.Component {
     super(props);
     this.state = {
       query: props.query,
-      data: null
+      data: null,
+      err: null
     }
   }
 
   componentWillReceiveProps(nextProps) {
     if (!_.isEmpty(nextProps.query) && nextProps.query !== this.state.query) {
-      this.setState({ ...nextProps, data: null });
-      axios.get(wikiUrl + nextProps.query)
+      this.setState({ ...nextProps, data: null, err: null });
+      axios.get(wikiUrl, {
+        params: {
+          q: nextProps.query
+        }
+      })
         .then((resp) => {
-          console.log(resp);
-          this.setState({ data: resp });
+          this.setState({ data: resp.data });
         })
         .catch((err) => {
-          console.log(err);
-          this.setState({ data: err });
+          this.setState({ err });
         });
     }
   }
@@ -41,12 +44,16 @@ class Wiki extends React.Component {
     let content = null;
 
     // loading screen
-    if (_.isEmpty(this.state.data)) {
+    if (!_.isEmpty(this.state.err)) {
+      content = <div className="error">error fetching background information</div>;
+    }
+    // loading
+    else if (_.isEmpty(this.state.data)) {
       content = <LoadingComponent />;
     }
     // no data
     else if (!this.state.data.found) {
-      content = <div className="error">no background data found :(</div>;
+      content = <div className="error">no background information found</div>;
     }
     // valid data
     else {

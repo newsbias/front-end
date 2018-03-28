@@ -20,8 +20,8 @@ const Modul = props => {
 
       <div className="modul-content">
         <h3>{props.title}</h3>
-        <img className="modul-image" src={props.image_url} alt="image not found" />
-        <p className="modul-summary">{props.summary}</p>
+        {/* <img className="modul-image" src={props.image_url} alt="image not found" /> */}
+        {/* <p className="modul-summary">{props.summary}</p> */}
 
         <p className="modul-article">articles used in cluster</p>
         <hr />
@@ -32,7 +32,6 @@ const Modul = props => {
               <ArticleComponent
                 key={`article-${idx}`}
                 title={article.title}
-                source={article.source}
                 url={article.url}
               />
             )

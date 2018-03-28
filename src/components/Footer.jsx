@@ -3,7 +3,7 @@ import './styles/footer.scss';
 
 const Footer = () => (
   <footer>
-    <p>powered by <a href="https://newsapi.org" target="_blank">newsapi.org</a></p>
+    <p>powered by true american spirit 😉</p>
   </footer>
 );
 
