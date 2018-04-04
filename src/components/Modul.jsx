@@ -23,8 +23,7 @@ const Modul = props => {
         {/* <img className="modul-image" src={props.image_url} alt="image not found" /> */}
         <p className="modul-summary">{props.summary}</p>
 
-        <p className="modul-article">articles used in cluster</p>
-        <hr />
+        <p className="modul-subheading">articles used in cluster</p>
         {_.chain(props.articles)
           .sortBy(['source'])
           .map((article, idx) => {
@@ -36,8 +35,10 @@ const Modul = props => {
               />
             )
           })
-          .value()
-        }
+          .value()}
+
+        <p className="modul-subheading">related searches</p>
+        <p>coming soon!</p>
       </div>
     </div>
   );
